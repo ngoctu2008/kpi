@@ -19,7 +19,7 @@ $groups_list = nv_groups_list();
 
 if ($nv_Request->isset_request('savesetting', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if ($checkss != md5($global_config['sitekey'] . $nv_Request->session_id)) {
+    if (!nv_check_valid_token($checkss)) {
         die('Stop!!! CSRF Detected');
     }
 
@@ -51,7 +51,7 @@ $xtpl->assign('NV_OP_VARIABLE', NV_OP_VARIABLE);
 $xtpl->assign('MODULE_NAME', $module_name);
 $xtpl->assign('OP', $op);
 
-$xtpl->assign('CHECKSS', md5($global_config['sitekey'] . $nv_Request->session_id));
+$xtpl->assign('CHECKSS', NV_CHECK_SESSION);
 
 // Get current config
 $db_slave->sqlreset()

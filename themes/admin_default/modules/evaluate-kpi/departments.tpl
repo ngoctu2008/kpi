@@ -52,6 +52,10 @@
                 <textarea class="form-control" name="description">{ROW.description}</textarea>
             </div>
             <div class="form-group">
+                <label><strong>{LANG.department_users}</strong></label>
+                <input class="form-control" type="text" name="users_list" value="{ROW.users_list}" placeholder="{LANG.department_users_note}" />
+            </div>
+            <div class="form-group">
                 <label><strong>{LANG.status}</strong></label>
                 <div>
                     <label class="radio-inline"><input type="radio" name="status" value="1" {CHECKED_STATUS_1} /> {LANG.status_1}</label>

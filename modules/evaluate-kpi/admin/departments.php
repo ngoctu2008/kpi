@@ -19,7 +19,7 @@ $error = '';
 
 if ($nv_Request->isset_request('submit', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if ($checkss != md5($global_config['sitekey'] . $nv_Request->session_id)) {
+    if (!nv_check_valid_token($checkss)) {
         die('Stop!!! CSRF Detected');
     }
 
@@ -28,6 +28,8 @@ if ($nv_Request->isset_request('submit', 'post')) {
     $row['manager_id'] = $nv_Request->get_int('manager_id', 'post', 0);
     $row['description'] = $nv_Request->get_string('description', 'post', '');
     $row['status'] = $nv_Request->get_int('status', 'post', 1);
+
+    $users_list = $nv_Request->get_string('users_list', 'post', '');
 
     if (empty($row['title'])) {
         $error = $lang_module['error_empty_title'];
@@ -45,6 +47,26 @@ if ($nv_Request->isset_request('submit', 'post')) {
         $sth->bindParam(':status', $row['status'], PDO::PARAM_INT);
 
         if ($sth->execute()) {
+            if ($id == 0) {
+                $id = $db->lastInsertId();
+            }
+
+            // Save users mapping
+            if (!empty($users_list)) {
+                $user_ids = array_map('intval', explode(',', $users_list));
+
+                // Remove users currently in this dept
+                $db->query('DELETE FROM ' . NV_PREFIXLANG . '_' . $module_data . '_users WHERE department_id=' . $id);
+
+                // Add new users
+                $sth_usr = $db->prepare('REPLACE INTO ' . NV_PREFIXLANG . '_' . $module_data . '_users (userid, department_id) VALUES (:userid, :department_id)');
+                foreach ($user_ids as $uid) {
+                    if ($uid > 0) {
+                        $sth_usr->execute([':userid' => $uid, ':department_id' => $id]);
+                    }
+                }
+            }
+
             nv_redirect_location(NV_BASE_ADMINURL . 'index.php?' . NV_LANG_VARIABLE . '=' . NV_LANG_DATA . '&' . NV_NAME_VARIABLE . '=' . $module_name . '&' . NV_OP_VARIABLE . '=' . $op);
         } else {
             $error = $lang_module['error_save'];
@@ -57,14 +79,26 @@ if ($nv_Request->isset_request('submit', 'post')) {
             ->from(NV_PREFIXLANG . '_' . $module_data . '_departments')
             ->where('id=' . $id);
         $row = $db_slave->query($db_slave->sql())->fetch();
+
+        // Get mapped users
+        $db_slave->sqlreset()
+            ->select('userid')
+            ->from(NV_PREFIXLANG . '_' . $module_data . '_users')
+            ->where('department_id=' . $id);
+        $usr_res = $db_slave->query($db_slave->sql());
+        $mapped_users = [];
+        while ($uid = $usr_res->fetchColumn()) {
+            $mapped_users[] = $uid;
+        }
+        $row['users_list'] = implode(',', $mapped_users);
     } else {
-        $row = ['id' => 0, 'title' => '', 'manager_id' => 0, 'description' => '', 'status' => 1];
+        $row = ['id' => 0, 'title' => '', 'manager_id' => 0, 'description' => '', 'status' => 1, 'users_list' => ''];
     }
 }
 
 if ($nv_Request->isset_request('delete', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if ($checkss != md5($global_config['sitekey'] . $nv_Request->session_id)) {
+    if (!nv_check_valid_token($checkss)) {
         die('NO');
     }
 
@@ -88,7 +122,7 @@ $row['title'] = nv_htmlspecialchars($row['title']);
 $row['description'] = nv_htmlspecialchars($row['description']);
 $xtpl->assign('ROW', $row);
 
-$xtpl->assign('CHECKSS', md5($global_config['sitekey'] . $nv_Request->session_id));
+$xtpl->assign('CHECKSS', NV_CHECK_SESSION);
 
 if (!empty($error)) {
     $xtpl->assign('ERROR', $error);

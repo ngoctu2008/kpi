@@ -19,7 +19,7 @@ $error = '';
 
 if ($nv_Request->isset_request('submit', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if ($checkss != md5($global_config['sitekey'] . $nv_Request->session_id)) {
+    if (!nv_check_valid_token($checkss)) {
         die('Stop!!! CSRF Detected');
     }
 
@@ -74,7 +74,7 @@ if ($nv_Request->isset_request('submit', 'post')) {
 
 if ($nv_Request->isset_request('delete', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if ($checkss != md5($global_config['sitekey'] . $nv_Request->session_id)) {
+    if (!nv_check_valid_token($checkss)) {
         die('NO');
     }
 
@@ -98,7 +98,7 @@ $row['title'] = nv_htmlspecialchars($row['title']);
 $row['description'] = nv_htmlspecialchars($row['description']);
 $xtpl->assign('ROW', $row);
 
-$xtpl->assign('CHECKSS', md5($global_config['sitekey'] . $nv_Request->session_id));
+$xtpl->assign('CHECKSS', NV_CHECK_SESSION);
 
 if (!empty($error)) {
     $xtpl->assign('ERROR', $error);

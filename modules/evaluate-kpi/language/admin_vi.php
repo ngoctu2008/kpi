@@ -39,6 +39,8 @@ $lang_module['department_add'] = 'Thêm phòng ban';
 $lang_module['department_manager'] = 'Người quản lý (Duyệt KPI)';
 $lang_module['department_manager_note'] = 'Nhập tài khoản hoặc ID của quản lý';
 $lang_module['department_description'] = 'Mô tả';
+$lang_module['department_users'] = 'Danh sách UserID nhân viên';
+$lang_module['department_users_note'] = 'Nhập các User ID cách nhau bởi dấu phẩy (,). VD: 15,22,35';
 
 $lang_module['config_group_employee'] = 'Nhóm Nhân viên (Nhóm 1, 2, 3)';
 $lang_module['config_group_manager'] = 'Nhóm Quản lý (Nhóm 4)';
@@ -47,3 +49,18 @@ $lang_module['config_mapping_note'] = 'Chọn các nhóm người dùng trên h�
 $lang_module['error_empty_title'] = 'Lỗi: Chưa nhập tiêu đề!';
 $lang_module['error_save'] = 'Lỗi: Hệ thống không thể lưu dữ liệu!';
 $lang_module['save_success'] = 'Thực hiện thành công!';
+
+$lang_module['report_filter'] = 'Lọc báo cáo thống kê (Mẫu 03, 04, 05)';
+$lang_module['report_choose_period'] = 'Chọn kỳ đánh giá:';
+$lang_module['report_view_online'] = 'Xem báo cáo trực tuyến';
+$lang_module['report_export_excel'] = 'Xuất Excel';
+$lang_module['report_choose'] = '--- Chọn ---';
+$lang_module['report_title_03'] = 'Biểu tổng hợp kết quả (Mẫu 03)';
+$lang_module['report_col_stt'] = 'STT';
+$lang_module['report_col_dep'] = 'Đơn vị (Tổ/Phòng ban)';
+$lang_module['report_col_total'] = 'Tổng số LĐ';
+$lang_module['report_col_excellent'] = 'Hoàn thành Xuất sắc';
+$lang_module['report_col_good'] = 'Hoàn thành Tốt';
+$lang_module['report_col_average'] = 'Hoàn thành';
+$lang_module['report_col_poor'] = 'Không hoàn thành';
+$lang_module['report_col_sl'] = 'SL';

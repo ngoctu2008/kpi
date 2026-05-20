@@ -17,6 +17,7 @@ $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lan
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_period";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_criteria";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_departments";
+$sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_users";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_tasks";
 $sql_drop_module[] = "DROP TABLE IF EXISTS " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_records";
 
@@ -60,6 +61,14 @@ $sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_
   weight int(11) unsigned NOT NULL DEFAULT '0',
   status tinyint(1) unsigned NOT NULL DEFAULT '1',
   PRIMARY KEY (id)
+) ENGINE=MyISAM";
+
+// Bảng lưu mapping user thuộc phòng ban nào
+$sql_create_module[] = "CREATE TABLE " . $db_config['prefix'] . "_" . $lang . "_" . $module_data . "_users (
+  userid int(11) unsigned NOT NULL,
+  department_id int(11) unsigned NOT NULL DEFAULT '0',
+  PRIMARY KEY (userid),
+  KEY department_id (department_id)
 ) ENGINE=MyISAM";
 
 // Bảng thống kê sản phẩm công việc
