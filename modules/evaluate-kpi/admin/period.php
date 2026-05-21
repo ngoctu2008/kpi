@@ -19,7 +19,7 @@ $error = '';
 
 if ($nv_Request->isset_request('submit', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if (!nv_check_valid_token($checkss)) {
+    if ($checkss != NV_CHECK_SESSION) {
         die('Stop!!! CSRF Detected');
     }
 
@@ -86,7 +86,7 @@ if ($nv_Request->isset_request('submit', 'post')) {
 
 if ($nv_Request->isset_request('delete', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if (!nv_check_valid_token($checkss)) {
+    if ($checkss != NV_CHECK_SESSION) {
         die('NO');
     }
 

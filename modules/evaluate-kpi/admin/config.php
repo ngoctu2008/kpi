@@ -19,7 +19,7 @@ $groups_list = nv_groups_list();
 
 if ($nv_Request->isset_request('savesetting', 'post')) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if (!nv_check_valid_token($checkss)) {
+    if ($checkss != NV_CHECK_SESSION) {
         die('Stop!!! CSRF Detected');
     }
 

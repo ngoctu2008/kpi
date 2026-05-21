@@ -69,13 +69,13 @@
             <input type="hidden" name="checkss" value="{CHECKSS}" />
 
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label><strong>{LANG.task_title} <span class="text-danger">(*)</span></strong></label>
                         <input class="form-control" type="text" name="title" value="{ROW.title}" required="required" />
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-12">
                     <div class="form-group">
                         <label><strong>{LANG.task_type}</strong></label>
                         <select name="task_type" class="form-control">
@@ -92,19 +92,19 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label><strong>{LANG.task_freq}</strong></label>
                         <input class="form-control" type="text" name="frequency" value="{ROW.frequency}" placeholder="VD: Hàng ngày, Hàng tuần..." />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label><strong>{LANG.task_output}</strong></label>
                         <input class="form-control" type="text" name="output_expected" value="{ROW.output_expected}" placeholder="VD: 5 bài viết, 1 báo cáo..." />
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label><strong>{LANG.task_deadline}</strong></label>
                         <div class="input-group">
@@ -118,7 +118,7 @@
             </div>
 
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-8">
                     <div class="form-group">
                         <label><strong>{LANG.task_status}</strong></label>
                         <select name="status" class="form-control">

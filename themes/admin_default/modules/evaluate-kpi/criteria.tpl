@@ -4,7 +4,7 @@
 <!-- END: error -->
 
 <div class="alert alert-info">
-    <i class="fa fa-info-circle"></i> Vui lòng thiết lập các tiêu chí sao cho tổng điểm tối đa bằng 30.
+    <i class="fa fa-info-circle"></i> {LANG.cri_notice}
 </div>
 
 <!-- BEGIN: list -->
@@ -12,9 +12,9 @@
     <table class="table table-striped table-bordered table-hover">
         <thead>
             <tr>
-                <th class="w50 text-center">STT</th>
+                <th class="w50 text-center">{LANG.cri_stt}</th>
                 <th>{LANG.title}</th>
-                <th class="text-center w150">Điểm tối đa</th>
+                <th class="text-center w150">{LANG.cri_max_score}</th>
                 <th class="w100 text-center">{LANG.status}</th>
                 <th class="w150 text-center">{LANG.action}</th>
             </tr>
@@ -35,7 +35,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="2" class="text-right"><strong>TỔNG CỘNG:</strong></td>
+                <td colspan="2" class="text-right"><strong>{LANG.cri_total}</strong></td>
                 <td class="text-center text-danger"><strong>{TOTAL_MAX_SCORE} / 30</strong></td>
                 <td colspan="2"></td>
             </tr>
@@ -52,16 +52,16 @@
             <input type="hidden" name="checkss" value="{CHECKSS}" />
             <div class="form-group">
                 <label><strong>{LANG.title}</strong></label>
-                <input class="form-control" type="text" name="title" value="{ROW.title}" required="required" placeholder="VD: Chính trị, tư tưởng" />
+                <input class="form-control" type="text" name="title" value="{ROW.title}" required="required" placeholder="" />
             </div>
 
             <div class="form-group">
-                <label><strong>Mô tả chi tiết</strong></label>
-                <textarea class="form-control" name="description" rows="3" placeholder="Ghi chú thêm về tiêu chí để người dùng dễ đánh giá">{ROW.description}</textarea>
+                <label><strong>{LANG.cri_desc}</strong></label>
+                <textarea class="form-control" name="description" rows="3" placeholder="{LANG.cri_desc_ph}">{ROW.description}</textarea>
             </div>
 
             <div class="form-group">
-                <label><strong>Điểm tối đa</strong></label>
+                <label><strong>{LANG.cri_max_score}</strong></label>
                 <input class="form-control w250" type="number" step="0.5" name="max_score" value="{ROW.max_score}" required="required" />
             </div>
 

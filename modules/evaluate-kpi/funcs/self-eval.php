@@ -92,7 +92,7 @@ if ($record['status'] > 0 && $nv_Request->isset_request('submit', 'post')) {
 // 5. Handle Form Submit
 if ($nv_Request->isset_request('submit', 'post') && $record['status'] == 0) {
     $checkss = $nv_Request->get_string('checkss', 'post', '');
-    if (!nv_check_valid_token($checkss)) {
+    if ($checkss != NV_CHECK_SESSION) {
         die($lang_module['error_token']);
     }
 

@@ -14,7 +14,7 @@ if (!defined('NV_MAINFILE')) {
 
 /**
  * Tính điểm KPI cho viên chức không giữ chức vụ quản lý (Nhóm 1, 2, 3)
- * Công thức: ((a + b + c) / 3) * 70
+ * Công thức: ((a + b + c) / 3) * 70% (a, b, c là thang điểm 100)
  *
  * @param float $a Số lượng
  * @param float $b Chất lượng
@@ -22,12 +22,12 @@ if (!defined('NV_MAINFILE')) {
  * @return float
  */
 function nv_evaluate_kpi_calc_employee($a, $b, $c) {
-    return round((($a + $b + $c) / 3) * 70, 2);
+    return round((($a + $b + $c) / 3) * 0.70, 2);
 }
 
 /**
  * Tính điểm KPI cho viên chức giữ chức vụ quản lý (Nhóm 4)
- * Công thức: ((a + b + c + d + d2 + e) / 6) * 70
+ * Công thức: ((a + b + c + d + d2 + e) / 6) * 70%
  *
  * @param float $a Số lượng
  * @param float $b Chất lượng
@@ -38,7 +38,7 @@ function nv_evaluate_kpi_calc_employee($a, $b, $c) {
  * @return float
  */
 function nv_evaluate_kpi_calc_manager($a, $b, $c, $d, $d2, $e) {
-    return round((($a + $b + $c + $d + $d2 + $e) / 6) * 70, 2);
+    return round((($a + $b + $c + $d + $d2 + $e) / 6) * 0.70, 2);
 }
 
 /**

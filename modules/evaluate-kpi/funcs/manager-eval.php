@@ -51,7 +51,7 @@ if ($record_id > 0) {
 
     if ($nv_Request->isset_request('submit_approve', 'post')) {
         $checkss = $nv_Request->get_string('checkss', 'post', '');
-        if (!nv_check_valid_token($checkss)) {
+        if ($checkss != NV_CHECK_SESSION) {
             die($lang_module['error_token']);
         }
 

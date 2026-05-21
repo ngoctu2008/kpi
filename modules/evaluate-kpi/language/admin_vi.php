@@ -64,3 +64,28 @@ $lang_module['report_col_good'] = 'Hoàn thành Tốt';
 $lang_module['report_col_average'] = 'Hoàn thành';
 $lang_module['report_col_poor'] = 'Không hoàn thành';
 $lang_module['report_col_sl'] = 'SL';
+
+$lang_module['dash_overview'] = 'Tổng quan hệ thống';
+$lang_module['dash_departments'] = 'Phòng ban (Tổ chuyên môn)';
+$lang_module['dash_periods'] = 'Kỳ đánh giá đã khởi tạo';
+$lang_module['dash_tasks'] = 'Sản phẩm công việc được ghi nhận';
+$lang_module['dash_status_title'] = 'Trạng thái Phiếu Đánh giá KPI';
+$lang_module['dash_draft'] = 'Bản nháp (Đang tự đánh giá)';
+$lang_module['dash_pending'] = 'Chờ Quản lý duyệt';
+$lang_module['dash_approved'] = 'Đã duyệt & Chốt điểm';
+$lang_module['dash_instruction_1'] = 'Để bắt đầu sử dụng, hãy chắc chắn bạn đã:';
+$lang_module['dash_instruction_2'] = 'Cấu hình module: Mapping đúng Nhóm người dùng (Nhân viên, Quản lý).';
+$lang_module['dash_instruction_3'] = 'Tạo phòng ban: Gắn đúng User ID của người Quản lý.';
+$lang_module['dash_instruction_4'] = 'Mở kỳ đánh giá: Để nhân viên bắt đầu nộp báo cáo.';
+
+$lang_module['period_start'] = 'Bắt đầu';
+$lang_module['period_end'] = 'Kết thúc';
+$lang_module['period_lock'] = 'Hạn chót (Lock form)';
+$lang_module['period_ph'] = 'VD: Đánh giá KPI Tháng 01/2024';
+
+$lang_module['cri_max_score'] = 'Điểm tối đa';
+$lang_module['cri_stt'] = 'STT';
+$lang_module['cri_total'] = 'TỔNG CỘNG:';
+$lang_module['cri_notice'] = 'Vui lòng thiết lập các tiêu chí sao cho tổng điểm tối đa bằng 30.';
+$lang_module['cri_desc'] = 'Mô tả chi tiết';
+$lang_module['cri_desc_ph'] = 'Ghi chú thêm về tiêu chí để người dùng dễ đánh giá';
